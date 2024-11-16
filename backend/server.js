@@ -78,7 +78,7 @@ app.post('/generate-text', async (req, res) => {
     const { systemMessage, userMessage, imageUrl } = req.body;
 
     // Construct the prompt with imageUrl and personality
-    const prompt = `${systemMessage} The user asks: "${userMessage}" about the image: ${imageUrl}`;
+    const prompt = `${systemMessage} The user gave you a list: "${userMessage}" and asks if this image: ${imageUrl} matches any of the items in the list`;
 
     // Call OpenAI API (chat-completions)
     const openaiResponse = await openai.chat.completions.create({
