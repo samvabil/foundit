@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
+import FoundItems from './pages/FoundItems';
+import Matches from './pages/Matches';
+import Navbar from './components/Navbar';
 import UserPrompt from './components/UserPrompt';
 
 function App() {
@@ -8,16 +11,25 @@ function App() {
 
   return (
     <Router>
+      <Navbar />
       <div className="App">
         <header className="App-header"></header>
         <h1>Image Upload and Lost Item Finder</h1>
 
         <Routes>
-          {/* Define the HomePage route */}
           <Route
             path="/"
             element={<HomePage imageUrl={imageUrl} setImageUrl={setImageUrl} />}
           />
+          <Route
+            path="/found_items"
+            element={<FoundItems imageUrl={imageUrl} setImageUrl={setImageUrl} />}
+          />
+          <Route
+            path="/matches"
+            element={<Matches imageUrl={imageUrl} setImageUrl={setImageUrl} />}
+          />
+          {/* Add more routes here as needed */}
 
           {/* Define the UserPrompt route */}
           <Route

@@ -19,6 +19,7 @@ const lostItems = [
 const HomePage = ({ imageUrl, setImageUrl }) => {
   return (
     <div className="home-page">
+      <h1>Upload a lost item</h1>
       <h1>Welcome to the Image Upload App</h1>
 
       {/* Image Upload Section */}
