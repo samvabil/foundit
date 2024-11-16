@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
-import UploadImage from './components/UploadImage';
-import UserPrompt from './components/UserPrompt';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+
 function App() {
   const [imageUrl, setImageUrl] = useState('');
+
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
+    <Router>
+      <div className="App">
+        <header className="App-header"></header>
         <h1>Image Upload App</h1>
 
-          <div className="home-page">
-            <h1>Welcome to the Image Upload App</h1>
-            {/* Pass the setImageUrl function as a prop */}
-            <UploadImage setImageUrl={setImageUrl} />
-            {/* Conditionally render UserPrompt if imageUrl is available */}
-            {imageUrl && <UserPrompt imageUrl={imageUrl} />}
-          </div>
-    </div>
+        <Routes>
+          {/* Define the HomePage route */}
+          <Route
+            path="/"
+            element={<HomePage imageUrl={imageUrl} setImageUrl={setImageUrl} />}
+          />
+          {/* Add more routes here as needed */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
