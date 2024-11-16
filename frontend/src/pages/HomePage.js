@@ -2,17 +2,6 @@ import React, { useState } from 'react';
 import UploadImage from '../components/UploadImage';
 import UserPrompt from '../components/UserPrompt';
 
-const HomePage = ({ imageUrl, setImageUrl }) => {
-  return (
-    <div className="home-page">
-      <h1>Welcome to the Image Upload App</h1>
-      <UploadImage setImageUrl={setImageUrl} />
-      {imageUrl && <UserPrompt imageUrl={imageUrl} />}
-      
-    </div>
-  );
-};
-
 // Hard-coded initial items
 const lostItems = [
   { name: 'Wallet', color: 'Black', description: 'Leather wallet with cards inside', location: 'LBJ Student Center' },
@@ -27,23 +16,33 @@ const lostItems = [
   { name: 'Gloves', color: 'Brown', description: 'Leather gloves', location: 'LBJ Student Center' },
 ];
 
-const LostItem = () => {
+const HomePage = ({ imageUrl, setImageUrl }) => {
   return (
+    <div className="home-page">
+      <h1>Welcome to the Image Upload App</h1>
+
+      {/* Image Upload Section */}
+      <UploadImage setImageUrl={setImageUrl} />
+      
+      {/* Show UserPrompt if an image is uploaded */}
+      {imageUrl && <UserPrompt imageUrl={imageUrl} />}
+
+      {/* Display Lost Items */}
       <div>
-          <h1>Lost Items</h1>
-          <div className="item-list">
-              {lostItems.map((item, index) => (
-                  <div key={index} className="item">
-                      <p><strong>Name:</strong> {item.name}</p>
-                      <p><strong>Color:</strong> {item.color}</p>
-                      <p><strong>Description:</strong> {item.description}</p>
-                      <p><strong>Location:</strong> {item.location}</p>
-                  </div>
-              ))}
-          </div>
+        <h2>Lost Items</h2>
+        <div className="item-list">
+          {lostItems.map((item, index) => (
+            <div key={index} className="item">
+              <p><strong>Name:</strong> {item.name}</p>
+              <p><strong>Color:</strong> {item.color}</p>
+              <p><strong>Description:</strong> {item.description}</p>
+              <p><strong>Location:</strong> {item.location}</p>
+            </div>
+          ))}
+        </div>
       </div>
+    </div>
   );
 };
 
 export default HomePage;
-  
