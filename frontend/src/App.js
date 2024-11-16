@@ -1,29 +1,29 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+
 import UploadImage from './components/UploadImage';
 import UserPrompt from './components/UserPrompt';
 import LostItem from './pages/LostItems'; // Import the LostItem component
 
 function App() {
   const [imageUrl, setImageUrl] = useState('');
-  
   return (
-    <div className="App">
-      <header className="App-header"></header>
+    <Router>
+      <div className="App">
+        <header className="App-header"></header>
+        <h1>Image Upload App</h1>
 
-      <h1>Image Upload App</h1>
-
-      <div className="home-page">
-        <h1>Welcome to the Image Upload App</h1>
-        {/* Pass the setImageUrl function as a prop */}
-        <UploadImage setImageUrl={setImageUrl} />
-        {/* Conditionally render UserPrompt if imageUrl is available */}
-        {imageUrl && <UserPrompt imageUrl={imageUrl} />}
+        <Routes>
+          {/* Define the HomePage route */}
+          <Route
+            path="/"
+            element={<HomePage imageUrl={imageUrl} setImageUrl={setImageUrl} />}
+          />
+          {/* Add more routes here as needed */}
+        </Routes>
       </div>
-
-      <div className="lost-items-section">
-        <LostItem /> {/* Render the LostItem component */}
-      </div>
-    </div>
+    </Router>
   );
 }
 
